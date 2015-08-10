@@ -53,15 +53,15 @@ namespace Excercises.For.Programmers.Excercise3
         [Test]
         public void Asking_For_An_Author()
         {
-            string quote = new QuotePrinter().AskForAuthor();
-            Assert.That(quote, Is.EqualTo("Who said it?"));
+            string author = new QuotePrinter().AskForAuthor();
+            Assert.That(author, Is.EqualTo("Who said it?"));
         }
 
         [Test]
         public void Formatting_Quote()
         {
-            string quote = new QuotePrinter().FormatQuote("Shaun", "This is a quote");
-            Assert.That(quote, Is.EqualTo("Shaun says, \"This is a quote.\""));
+            string formattedQuote = new QuotePrinter().FormatQuote("Shaun", "This is a quote");
+            Assert.That(formattedQuote, Is.EqualTo("Shaun says, \"This is a quote.\""));
         }
     }
 }
