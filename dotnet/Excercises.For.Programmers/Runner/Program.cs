@@ -1,5 +1,6 @@
 ﻿using System;
 using Excercises.For.Programmers.Excercise2;
+using Excercises.For.Programmers.Excercise3;
 
 namespace Runner
 {
@@ -7,7 +8,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            new CharacterCount().CountCharacters();
+            new ConsoleQuotePrinter().Execute();
         }
     }
 }
