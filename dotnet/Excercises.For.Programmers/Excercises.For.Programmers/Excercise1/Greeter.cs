@@ -41,8 +41,8 @@ namespace Excercises.For.Programmers.Excercise1
         [Test]
         public void Greeting()
         {
-            string question = new TestGreeter().Greeting("Shaun");
-            Assert.That(question, Is.EqualTo("Hello, Shaun, nice to meet you!"));
+            string greeting = new TestGreeter().Greeting("Shaun");
+            Assert.That(greeting, Is.EqualTo("Hello, Shaun, nice to meet you!"));
         }
 
         [Test]
@@ -51,8 +51,8 @@ namespace Excercises.For.Programmers.Excercise1
         [TestCase(null)]
         public void GreetingWithNoName(string name)
         {
-            string question = new TestGreeter().Greeting(name);
-            Assert.That(question, Is.EqualTo("Hello, nice to meet you!"));
+            string greeting = new TestGreeter().Greeting(name);
+            Assert.That(greeting, Is.EqualTo("Hello, nice to meet you!"));
         }
 
         class TestGreeter : Greeter
