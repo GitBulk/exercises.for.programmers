@@ -1,7 +1,4 @@
-﻿using System;
-using Excercises.For.Programmers.Excercise2;
-using Excercises.For.Programmers.Excercise3;
-using Excercises.For.Programmers.Excercise4;
+﻿using Excercises.For.Programmers.Excercise5;
 
 namespace Runner
 {
@@ -9,7 +6,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            new ConsoleMadLib().Execute();
+            new ConsoleSimpleMath().Execute();
         }
     }
 }
