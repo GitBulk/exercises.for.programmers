@@ -42,35 +42,26 @@ namespace Excercises.For.Programmers.Excercise5
 
         public int AskForFirstNumber(IUserAdapter userAdapter)
         {
-            while (true)
-            {
-                try
-                {
-                    this.firstNumber = int.Parse(userAdapter.UserInput());
-                    if (this.firstNumber < 0)
-                    {
-                        userAdapter.UserInputFailure();
-                        continue;
-                    }
-                    break;
-                }
-                catch (FormatException)
-                {
-                    userAdapter.UserInputFailure();
-                }
-            }
-
+            this.firstNumber = ParseInput(userAdapter);
             return this.firstNumber;
         }
 
         public int AskForSecondNumber(IUserAdapter userAdapter)
         {
+            this.secondNumber = ParseInput(userAdapter);
+            return this.secondNumber;
+        }
+
+        private static int ParseInput(IUserAdapter userAdapter)
+        {
+            int number;
+
             while (true)
             {
                 try
                 {
-                    this.secondNumber = int.Parse(userAdapter.UserInput());
-                    if (this.secondNumber < 0)
+                    number = int.Parse(userAdapter.UserInput());
+                    if (number < 0)
                     {
                         userAdapter.UserInputFailure();
                         continue;
@@ -83,7 +74,7 @@ namespace Excercises.For.Programmers.Excercise5
                 }
             }
 
-            return this.secondNumber;
+            return number;
         }
 
         public Result Results()
