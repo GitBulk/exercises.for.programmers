@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Excercise2\CharacterCounter.cs" />
     <Compile Include="Excercise1\Greeter.cs" />
+    <Compile Include="Excercise6\RetirementCalculator.cs" />
     <Compile Include="Excercise5\SimpleMath.cs" />
     <Compile Include="Excercise4\MadLib.cs" />
     <Compile Include="Excercise3\QuotePrinter.cs" />

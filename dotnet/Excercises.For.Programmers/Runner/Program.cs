@@ -1,4 +1,4 @@
-﻿using Excercises.For.Programmers.Excercise5;
+﻿using Excercises.For.Programmers.Excercise6;
 
 namespace Runner
 {
@@ -6,7 +6,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            new ConsoleSimpleMath().Execute();
+            new ConsoleRetirementCalculator().Execute();
         }
     }
 }
