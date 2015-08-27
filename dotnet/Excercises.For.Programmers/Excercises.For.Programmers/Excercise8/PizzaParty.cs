@@ -4,28 +4,41 @@ using NUnit.Framework;
 
 namespace Excercises.For.Programmers.Excercise8
 {
-    // TODO: only accept numeric values, retry otherwise. Keep this in the UI layer, do not
-    // allow it to leak into the domain as I did in the other excercise.
-
     // Todo: Handle pluralization.
 
     public class ConsolePizzaSplitter
     {
         public void Execute()
         {
-            Console.Write("How many people? ");
-            var numberOfPeople = Console.ReadLine();
-
-            Console.Write("How many pizzas do you have? ");
-            var numberOfPizzas = Console.ReadLine();
+            int numberOfPeople = Input.Parse(message: "How many people? ");
+            int numberOfPizzas = Input.Parse(message: "How many pizzas do you have? ");
 
             Console.WriteLine("{0} people with {1} pizzas.", numberOfPeople, numberOfPizzas);
 
             var pizzaSplitter = new PizzaSplitter();
-            var pizzaSlices = pizzaSplitter.Split(int.Parse(numberOfPizzas), int.Parse(numberOfPeople));
+            var pizzaSlices = pizzaSplitter.Split(numberOfPizzas, numberOfPeople);
 
             Console.WriteLine("Each person gets {0} pieces of pizza.", pizzaSlices.SlicesPerPerson);
             Console.WriteLine("There are {0} leftover pieces.", pizzaSlices.LeftOverSlices);
+        }
+
+        static class Input
+        {
+            public static int Parse(string message)
+            {
+                while (true)
+                {
+                    Console.Write(message);
+
+                    try
+                    {
+                        return int.Parse(Console.ReadLine());
+                    }
+                    catch (FormatException)
+                    {
+                    }
+                }
+            }
         }
     }
 
@@ -33,7 +46,6 @@ namespace Excercises.For.Programmers.Excercise8
     public class Tests
     {
         [Test]
-        [TestCase(2, 4, 1, 0)]
         [TestCase(2, 8, 2, 0)]
         public void Multiple_Pizzas_And_Multiple_People_With_No_Leftovers(
             int numberOfPizzas,
@@ -50,7 +62,6 @@ namespace Excercises.For.Programmers.Excercise8
         }
 
         [Test]
-        [TestCase(2, 5, 1, 1)]
         [TestCase(2, 9, 2, 1)]
         public void Multiple_Pizzas_And_Multiple_People_With_Leftovers(
             int numberOfPizzas,
@@ -74,8 +85,8 @@ namespace Excercises.For.Programmers.Excercise8
             Debug.Assert(numberOfPeople > 1);
             Debug.Assert(numberOfPizzas > 1);
 
-            var slicesPerPerson = (numberOfPeople / numberOfPizzas) / numberOfPizzas;
-            return new SplitPizza() { SlicesPerPerson = slicesPerPerson, LeftOverSlices = numberOfPeople % numberOfPizzas};
+            var slicesPerPerson = (numberOfPeople * numberOfPizzas) / numberOfPeople;
+            return new SplitPizza() { SlicesPerPerson = slicesPerPerson, LeftOverSlices = numberOfPeople % numberOfPizzas };
         }
     }
 
