@@ -46,35 +46,58 @@ namespace Excercises.For.Programmers.Excercise8
     public class Tests
     {
         [Test]
-        [TestCase(2, 8, 2, 0)]
-        public void Multiple_Pizzas_And_Multiple_People_With_No_Leftovers(
-            int numberOfPizzas,
-            int numberOfPeople,
-            int slicesPerPerson,
-            int leftOvers)
+        public void Eight_People_Two_Pizzas()
         {
             var subject = new PizzaSplitter();
 
-            var split = subject.Split(numberOfPizzas, numberOfPeople);
+            var split = subject.Split(numberOfPizzas:2, numberOfPeople:8);
             
-            Assert.That(split.SlicesPerPerson, Is.EqualTo(slicesPerPerson));
-            Assert.That(split.LeftOverSlices, Is.EqualTo(leftOvers));
+            Assert.That(split.SlicesPerPerson, Is.EqualTo(2));
+            Assert.That(split.LeftOverSlices, Is.EqualTo(0));
         }
 
         [Test]
-        [TestCase(2, 9, 2, 1)]
-        public void Multiple_Pizzas_And_Multiple_People_With_Leftovers(
-            int numberOfPizzas,
-            int numberOfPeople,
-            int slicesPerPerson,
-            int leftOvers)
+        public void Two_People_Two_Pizzas()
+        {
+            var subject = new PizzaSplitter();
+
+            var split = subject.Split(numberOfPizzas: 2, numberOfPeople: 2);
+
+            Assert.That(split.SlicesPerPerson, Is.EqualTo(2));
+            Assert.That(split.LeftOverSlices, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Three_People_Two_Pizzas()
+        {
+            var subject = new PizzaSplitter();
+
+            var split = subject.Split(numberOfPizzas: 2, numberOfPeople: 3);
+
+            Assert.That(split.SlicesPerPerson, Is.EqualTo(2));
+            Assert.That(split.LeftOverSlices, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Four_People_Two_Pizzas()
+        {
+            var subject = new PizzaSplitter();
+
+            var split = subject.Split(numberOfPizzas: 2, numberOfPeople: 4);
+
+            Assert.That(split.SlicesPerPerson, Is.EqualTo(2));
+            Assert.That(split.LeftOverSlices, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Nine_People_Two_Pizzas()
         {
             var subject = new PizzaSplitter();
             
-            var split = subject.Split(numberOfPizzas, numberOfPeople);
+            var split = subject.Split(numberOfPizzas:2, numberOfPeople:9);
             
-            Assert.That(split.SlicesPerPerson, Is.EqualTo(slicesPerPerson));
-            Assert.That(split.LeftOverSlices, Is.EqualTo(leftOvers));
+            Assert.That(split.SlicesPerPerson, Is.EqualTo(2));
+            Assert.That(split.LeftOverSlices, Is.EqualTo(2));
         }
     }
 
@@ -85,8 +108,54 @@ namespace Excercises.For.Programmers.Excercise8
             Debug.Assert(numberOfPeople > 1);
             Debug.Assert(numberOfPizzas > 1);
 
-            var slicesPerPerson = (numberOfPeople * numberOfPizzas) / numberOfPeople;
-            return new SplitPizza() { SlicesPerPerson = slicesPerPerson, LeftOverSlices = numberOfPeople % numberOfPizzas };
+            var halfedPizzas = numberOfPizzas * 2;
+            var slicesPerPerson = halfedPizzas / numberOfPeople;
+
+            if (slicesPerPerson % 2 != 0 || slicesPerPerson == 0)
+            {
+                halfedPizzas += numberOfPizzas * 2;
+                slicesPerPerson = halfedPizzas / numberOfPeople;
+
+                if (slicesPerPerson % 2 != 0 || slicesPerPerson == 0)
+                {
+                    halfedPizzas += numberOfPizzas * 2;
+                    slicesPerPerson = halfedPizzas / numberOfPeople;
+
+                    if (slicesPerPerson % 2 != 0 || slicesPerPerson == 0)
+                    {
+                        halfedPizzas += numberOfPizzas * 2;
+                        slicesPerPerson = halfedPizzas / numberOfPeople;
+
+                        if (slicesPerPerson % 2 != 0 || slicesPerPerson == 0)
+                        {
+                            halfedPizzas += numberOfPizzas * 2;
+                            slicesPerPerson = halfedPizzas / numberOfPeople;
+
+                            if (slicesPerPerson % 2 != 0 || slicesPerPerson == 0)
+                            {
+                                halfedPizzas += numberOfPizzas * 2;
+                                slicesPerPerson = halfedPizzas / numberOfPeople;
+
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            var leftOvers = halfedPizzas % numberOfPeople;
+
+            return new SplitPizza()
+                   {
+                       SlicesPerPerson = slicesPerPerson,
+                       LeftOverSlices = leftOvers
+                   };
+        }
+
+        public bool IsEven(int slicesOfPizza)
+        {
+            return slicesOfPizza % 2 == 0;
         }
     }
 
