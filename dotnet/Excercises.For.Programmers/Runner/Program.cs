@@ -1,4 +1,4 @@
-﻿using Excercises.For.Programmers.Excercise8;
+﻿using Excercises.For.Programmers.Excercise9;
 
 namespace Runner
 {
@@ -6,7 +6,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            new ConsolePizzaSplitter().Execute();
+            new ConsolePaintCalculator().Execute();
         }
     }
 }
