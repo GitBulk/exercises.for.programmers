@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise9
+namespace Exercises.For.Programmers.Exercises._9
 {
     public class ConsolePaintCalculator
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise1
+namespace Exercises.For.Programmers.Exercises._1
 {
     public class Greeter
     {

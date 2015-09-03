@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise3
+namespace Exercises.For.Programmers.Exercises._3
 {
     public class ConsoleQuotePrinter
     {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise7
+namespace Exercises.For.Programmers.Exercises._7
 {
     public class ConsoleRoomCalculator
     {

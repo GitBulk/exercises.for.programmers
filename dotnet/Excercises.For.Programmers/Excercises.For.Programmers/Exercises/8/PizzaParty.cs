@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise8
+namespace Exercises.For.Programmers.Exercises._8
 {
     public class ConsolePizzaSplitter
     {

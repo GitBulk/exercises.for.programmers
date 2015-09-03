@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise4
+namespace Exercises.For.Programmers.Exercises._4
 {
     public class ConsoleMadLib
     {

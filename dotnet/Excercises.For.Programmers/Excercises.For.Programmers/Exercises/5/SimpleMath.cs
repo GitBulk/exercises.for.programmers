@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise5
+namespace Exercises.For.Programmers.Exercises._5
 {
     public class ConsoleSimpleMath : IUserAdapter
     {

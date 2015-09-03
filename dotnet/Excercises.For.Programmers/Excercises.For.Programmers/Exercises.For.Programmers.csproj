@@ -7,8 +7,8 @@
     <ProjectGuid>{CEEDA6CA-76FD-4404-8A11-6D4C52EDF3C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Excercises.For.Programmers</RootNamespace>
-    <AssemblyName>Excercises.For.Programmers</AssemblyName>
+    <RootNamespace>Exercises.For.Programmers</RootNamespace>
+    <AssemblyName>Exercises.For.Programmers</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,19 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Excercise2\CharacterCounter.cs" />
-    <Compile Include="Excercise1\Greeter.cs" />
-    <Compile Include="Excercise10\Input.cs" />
-    <Compile Include="Excercise10\PaintCalculator.cs" />
-    <Compile Include="Excercise9\Input.cs" />
-    <Compile Include="Excercise9\PaintCalculator.cs" />
-    <Compile Include="Excercise8\Input.cs" />
-    <Compile Include="Excercise8\PizzaParty.cs" />
-    <Compile Include="Excercise7\RoomCalculator.cs" />
-    <Compile Include="Excercise6\RetirementCalculator.cs" />
-    <Compile Include="Excercise5\SimpleMath.cs" />
-    <Compile Include="Excercise4\MadLib.cs" />
-    <Compile Include="Excercise3\QuotePrinter.cs" />
+    <Compile Include="Exercises\2\CharacterCounter.cs" />
+    <Compile Include="Exercises\1\Greeter.cs" />
+    <Compile Include="Exercises\10\Input.cs" />
+    <Compile Include="Exercises\10\PaintCalculator.cs" />
+    <Compile Include="Exercises\9\Input.cs" />
+    <Compile Include="Exercises\9\PaintCalculator.cs" />
+    <Compile Include="Exercises\8\Input.cs" />
+    <Compile Include="Exercises\8\PizzaParty.cs" />
+    <Compile Include="Exercises\7\RoomCalculator.cs" />
+    <Compile Include="Exercises\6\RetirementCalculator.cs" />
+    <Compile Include="Exercises\5\SimpleMath.cs" />
+    <Compile Include="Exercises\4\MadLib.cs" />
+    <Compile Include="Exercises\3\QuotePrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

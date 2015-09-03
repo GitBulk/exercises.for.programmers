@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise10
+namespace Exercises.For.Programmers.Exercises._10
 {
     public class ConsoleSelfCheckout
     {

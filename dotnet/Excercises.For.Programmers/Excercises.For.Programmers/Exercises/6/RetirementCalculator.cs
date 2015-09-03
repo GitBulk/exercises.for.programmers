@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise6
+namespace Exercises.For.Programmers.Exercises._6
 {
     public class ConsoleRetirementCalculator
     {

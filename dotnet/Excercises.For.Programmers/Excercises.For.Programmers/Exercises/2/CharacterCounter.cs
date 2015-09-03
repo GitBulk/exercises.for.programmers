@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Excercises.For.Programmers.Excercise2
+namespace Exercises.For.Programmers.Exercises._2
 {
     public class CharacterCount
     {

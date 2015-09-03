@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Excercises.For.Programmers.Excercise8
+namespace Exercises.For.Programmers.Exercises._8
 {
     static class Input
     {

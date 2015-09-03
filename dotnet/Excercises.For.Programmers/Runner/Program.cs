@@ -1,4 +1,4 @@
-﻿using Excercises.For.Programmers.Excercise10;
+﻿using Exercises.For.Programmers.Exercises._10;
 
 namespace Runner
 {
