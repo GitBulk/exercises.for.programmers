@@ -1,4 +1,4 @@
-﻿using Exercises.For.Programmers.Exercises._11;
+﻿using Exercises.For.Programmers.Exercises._12;
 
 namespace Runner
 {
@@ -6,7 +6,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            new ConsoleCurrencyConversion().Execute();
+            new ConsoleSimpleInterest().Execute();
         }
     }
 }

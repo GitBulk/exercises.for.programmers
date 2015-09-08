@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exercises\12\SimpleInterestCalculator.cs" />
+    <Compile Include="Exercises\12\Input.cs" />
     <Compile Include="Exercises\11\Input.cs" />
     <Compile Include="Exercises\11\CurrencyConverter.cs" />
     <Compile Include="Exercises\2\CharacterCounter.cs" />

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Exercises.For.Programmers.Exercises._10
+namespace Exercises.For.Programmers.Exercises._11
 {
     static class Input
     {
@@ -13,6 +13,22 @@ namespace Exercises.For.Programmers.Exercises._10
                 try
                 {
                     return Int32.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                }
+            }
+        }
+
+        public static decimal DecimalParse(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+
+                try
+                {
+                    return decimal.Parse(Console.ReadLine());
                 }
                 catch (FormatException)
                 {
