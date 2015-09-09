@@ -190,3 +190,5 @@ ModelManifest.xml
 /dotnet/Excercises.For.Programmers/packages/NUnit.2.6.4/lib
 /dotnet/Excercises.For.Programmers/packages/NUnit.2.6.4/license.txt
 *.nupkg
+/dotnet/Exercises.For.Programmers/packages/NUnit.2.6.4/lib
+/dotnet/Exercises.For.Programmers/packages/NUnit.2.6.4/license.txt
