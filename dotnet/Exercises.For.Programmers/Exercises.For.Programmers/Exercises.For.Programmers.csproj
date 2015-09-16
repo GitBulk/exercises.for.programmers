@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exercises\14\Money.cs" />
+    <Compile Include="Exercises\14\TaxCalculator.cs" />
+    <Compile Include="Exercises\14\Input.cs" />
     <Compile Include="Exercises\13\Input.cs" />
     <Compile Include="Exercises\13\CompoundInterestCalculator.cs" />
     <Compile Include="Exercises\12\SimpleInterestCalculator.cs" />
