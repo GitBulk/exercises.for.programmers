@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using NUnit.Framework;
 
 namespace Exercises.For.Programmers.Exercises._15
@@ -9,7 +11,7 @@ namespace Exercises.For.Programmers.Exercises._15
         public void Execute()
         {
             var username = Input.ParseString(message: "What is the username: ");
-            var password = Input.ParsePassword(message: "What is the password: ");
+            var password = Input.ParseString(message: "What is the password: ");
 
             if (PasswordValidator.Validate(username, password))
             {
@@ -18,7 +20,47 @@ namespace Exercises.For.Programmers.Exercises._15
             else
             {
                 Console.WriteLine("That password is incorrect.");
-            } 
+            }
+        }
+    }
+
+    class PasswordValidator
+    {
+        public static bool Validate(string username, string password)
+        {
+            if (UserNameValid(username))
+            {
+                using (var crypto = SHA256.Create())
+                {
+                    var hashedPassword = crypto.ComputeHash(Encoding.Unicode.GetBytes(password));
+                    return Password(username).Equals(Convert.ToBase64String(hashedPassword));
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private static string Password(string username)
+        {
+            return Credentials()[username];
+        }
+
+        private static bool UserNameValid(string username)
+        {
+            return Credentials().ContainsKey(username);
+        }
+
+        private static Dictionary<string, string> Credentials()
+        {
+            // Would add a salt additionally when storing for real. Each set of credentials
+            // would be assigned a unique salt when saved.
+            return new Dictionary<string, string>()
+                   {
+                       {"validUser", "4gEGXQVUZSYVwyDACh1byO3KRp1ywnkOJBUtDB4rYYk="},
+                       {"invalidUser", "nUuyFJB59QnJX3vF3Ssegp8jlV7VZPuYmmaGHPz5Cjo="}
+                   };
         }
     }
 
@@ -57,31 +99,6 @@ namespace Exercises.For.Programmers.Exercises._15
                 bool attemptedPassword = PasswordValidator.Validate("validUser", "PaSSword");
                 Assert.That(attemptedPassword, Is.False);
             }
-        }
-    }
-
-    class PasswordValidator
-    {
-        public static bool Validate(string username, string password)
-        {
-            string actualPassword;
-            if (Credentials().TryGetValue(username, out actualPassword))
-            {
-                return actualPassword.Equals(password);
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private static Dictionary<string, string> Credentials()
-        {
-            return new Dictionary<string, string>()
-                   {
-                       {"validUser", "password"},
-                       {"invalidUser", "password1"}
-                   };
         }
     }
 }

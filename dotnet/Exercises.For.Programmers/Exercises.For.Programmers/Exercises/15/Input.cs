@@ -42,28 +42,5 @@ namespace Exercises.For.Programmers.Exercises._15
             Console.Write(message);
             return Console.ReadLine();
         }
-
-        public static string ParsePassword(string message)
-        {
-            Console.Write(message);
-
-            var password = new StringBuilder();
-
-            while (true)
-            {
-                var consoleKeyInfo = Console.ReadKey(true);
-
-                if (consoleKeyInfo.Key == ConsoleKey.Enter)
-                {
-                    break;
-                }
-
-                password.Append(consoleKeyInfo.KeyChar);
-            }
-
-            Console.WriteLine();
-
-            return password.ToString();
-        }
     }
 }
