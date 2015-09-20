@@ -1,4 +1,4 @@
-﻿using Exercises.For.Programmers.Exercises._14;
+﻿using Exercises.For.Programmers.Exercises._15;
 
 namespace Runner
 {
@@ -6,7 +6,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            new ConsoleTaxCalculator().Execute();
+            new ConsolePasswordValidation().Execute();
         }
     }
 }
