@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using NUnit.Framework;
 
@@ -8,7 +9,11 @@ namespace Exercises.For.Programmers.Exercises._16
     {
         public void Execute()
         {
-            var age = Input.ParseInt(message: "What is your age? ");
+            var age = Input.ParseMinimumInt(
+                message: "What is your age? ",
+                minimum: 0,
+                minimumErrorMessage: "Enter a valid age.");
+
             DrivingAge.LegalToDrive(age, Console.Out);
         }
     }
@@ -17,6 +22,8 @@ namespace Exercises.For.Programmers.Exercises._16
     {
         public static void LegalToDrive(int age, TextWriter textWriter)
         {
+            Debug.Assert(age >= 0);
+            
             const int legalAgeToDrive = 16;
 
             textWriter.WriteLine(age >= legalAgeToDrive

@@ -21,6 +21,28 @@ namespace Exercises.For.Programmers.Exercises._16
             }
         }
 
+        public static int ParseMinimumInt(string message, int minimum, string minimumErrorMessage)
+        {
+            while (true)
+            {
+                Console.Write(message);
+
+                try
+                {
+                    var parsedInt = int.Parse(Console.ReadLine());
+                    if (parsedInt >= minimum)
+                    {
+                        return parsedInt;
+                    }
+
+                    Console.WriteLine(minimumErrorMessage);
+                }
+                catch (FormatException)
+                {
+                }
+            }
+        }
+
         public static decimal DecimalParse(string message)
         {
             while (true)
