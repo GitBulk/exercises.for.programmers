@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exercises\16\Input.cs" />
+    <Compile Include="Exercises\16\DrivingAge.cs" />
     <Compile Include="Exercises\15\Input.cs" />
     <Compile Include="Exercises\15\PasswordValidation.cs" />
     <Compile Include="Exercises\14\Money.cs" />
