@@ -14,19 +14,21 @@ namespace Exercises.For.Programmers.Exercises._16
                 minimum: 0,
                 minimumErrorMessage: "Enter a valid age.");
 
-            DrivingAge.LegalToDrive(age, Console.Out);
+            DrivingAge.LegalToDrive(age);
         }
     }
 
     static class DrivingAge
     {
-        public static void LegalToDrive(int age, TextWriter textWriter)
+        public static TextWriter Output = Console.Out;
+
+        public static void LegalToDrive(int age)
         {
             Debug.Assert(age >= 0);
             
             const int legalAgeToDrive = 16;
 
-            textWriter.WriteLine(age >= legalAgeToDrive
+            Output.WriteLine(age >= legalAgeToDrive
                 ? "You are old enough to legally drive."
                 : "You are not old enough to legally drive.");
         }
@@ -41,18 +43,22 @@ namespace Exercises.For.Programmers.Exercises._16
         [TestCase(35)]
         public void Legal_To_Drive(int legalAge)
         {
-            var stringWriter = new StringWriter();
-            DrivingAge.LegalToDrive(legalAge, stringWriter);
-            Assert.That(stringWriter.ToString(), Is.EqualTo("You are old enough to legally drive."));
+            DrivingAge.Output = new StringWriter();
+
+            DrivingAge.LegalToDrive(legalAge);
+
+            Assert.That(DrivingAge.Output.ToString(), Is.StringContaining("You are old enough to legally drive."));
         }
 
         [Test]
         [TestCase(15)]
         public void Illegal_To_Drive(int illegalAge)
         {
-            var stringWriter = new StringWriter();
-            DrivingAge.LegalToDrive(illegalAge, stringWriter);
-            Assert.That(stringWriter.ToString(), Is.EqualTo("You are not old enough to legally drive."));
+            DrivingAge.Output = new StringWriter();
+            
+            DrivingAge.LegalToDrive(illegalAge);
+
+            Assert.That(DrivingAge.Output.ToString(), Is.StringContaining("You are not old enough to legally drive."));
         }
     }
 }
