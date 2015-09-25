@@ -1,4 +1,4 @@
-﻿using Exercises.For.Programmers.Exercises._16;
+﻿using Exercises.For.Programmers.Exercises._17;
 
 namespace Runner
 {
@@ -6,7 +6,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            new ConsoleDrivingAge().Execute();
+            new ConsoleBloodAlcoholCalculator().Execute();
         }
     }
 }
