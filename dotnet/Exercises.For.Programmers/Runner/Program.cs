@@ -1,4 +1,4 @@
-﻿using Exercises.For.Programmers.Exercises._18;
+﻿using Exercises.For.Programmers.Exercises._19;
 
 namespace Runner
 {
@@ -6,7 +6,7 @@ namespace Runner
     {
         static void Main(string[] args)
         {
-            new ConsoleTemperatureConverter().Execute();
+            new ConsoleBmiCalculator().Execute();
         }
     }
 }

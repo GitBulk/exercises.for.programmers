@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exercises\19\Input.cs" />
+    <Compile Include="Exercises\19\BmiCalculator.cs" />
     <Compile Include="Exercises\18\TemperatureConverter.cs" />
     <Compile Include="Exercises\18\Input.cs" />
     <Compile Include="Exercises\17\BloodAlcoholCalculator.cs" />
