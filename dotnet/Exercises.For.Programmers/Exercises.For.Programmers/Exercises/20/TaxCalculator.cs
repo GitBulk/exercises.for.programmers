@@ -1,5 +1,7 @@
-﻿using System.IO;
-using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace Exercises.For.Programmers.Exercises._20
 {
@@ -9,63 +11,117 @@ namespace Exercises.For.Programmers.Exercises._20
         {
             var orderAmount = Input.ParseDecimal(message: "What is the order amount? ");
             var state = Input.ParseString(message: "What state do you live in? ");
+
+            var taxCalculator = new TaxCalculator();
+            var order = taxCalculator.Calculate(new StateCounty(state), new Order(orderAmount));
+
+            if (order.Tax != 0m)
+            {
+                Console.WriteLine("Tax: " + new Money(order.Tax));
+            }
+            
+            Console.WriteLine(new Money(order.Total));
         }
     }
 
-    // ask for user order amount
-    // ask for the state
-
-    // if wisconsin
-        // ask for county
-        // if eau claire
-            // add 0.05 tax
-        // else if dunn county
-            // add 0.04 tax
-        // display tax
-        // display total
-    // else if illinois
-        // add 0.08 tax
-        // display tax
-        // display total
-    // else
-        // display total
-
-    [TestFixture]
-    public class Tests
+    class Money
     {
-        [Test]
-        public void Order_For_Non_Taxable_State()
+        private readonly decimal value;
+
+        public Money(decimal value)
         {
-            var orderAmount = new TaxCalculator().Calculate(state: "New York", order:10m);
-            Assert.That(orderAmount, Is.EqualTo(10m));
+            this.value = value;
         }
 
-        [Test]
-        public void Order_For_Taxable_State()
+        public override string ToString()
         {
-            var orderAmount = new TaxCalculator().Calculate(state: "Illinois", order: 10m);
-            Assert.That(orderAmount, Is.EqualTo(10.80m));
+            return value.ToString("C", new CultureInfo("en-GB"));
+        }
+    }
+
+    public class Order
+    {
+        public decimal Total { get; private set; }
+
+        public decimal Tax { get; private set; }
+
+        public Order(decimal order, decimal tax = 0m)
+        {
+            this.Total = order;
+            this.Tax = tax;
         }
 
-        private interface ITaxCalculator
+        public Order AddTax(decimal tax)
         {
-            decimal Calculate(string state, decimal order);
+            var orderTotal = this.Total + (this.Total * tax);
+            return new Order(orderTotal, tax);
         }
 
-        class TaxCalculator : ITaxCalculator
+        public override string ToString()
         {
-            public decimal Calculate(string state, decimal order)
+            return this.Total.ToString(new CultureInfo("en-GB"));
+        }
+    }
+
+    public class StateCounty
+    {
+        private readonly string state;
+
+        public StateCounty(string state)
+        {
+            this.state = state;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.state.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as StateCounty;
+            return other != null && 
+                this.state.Equals(other.state, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public StateCounty County(string county)
+        {
+            return new StateCounty(string.Format("{0}-{1}", state, county));
+        }
+    }
+
+    public class TaxCalculator
+    {
+        private readonly IDictionary<StateCounty, decimal> taxableStates
+            = new Dictionary<StateCounty, decimal>()
+              {
+                  {new StateCounty("Illinois"), 0.08m},
+                  {new StateCounty("Wisconsin-Eau Claire"), 0.05m},
+                  {new StateCounty("Wisconsin-Dunn County"), 0.04m}
+              };
+
+        private readonly StateCounty[] taxableCounties = { new StateCounty("Wisconsin") };
+
+        public Order Calculate(StateCounty stateCounty, Order order)
+        {
+            if (taxableStates.ContainsKey(stateCounty))
             {
-                if (state == "Illinois")
-                {
-                    const decimal tax = 0.08m;
-                    return order + (order * tax);
-                }
-
-                return order;
+                decimal tax = taxableStates[stateCounty];
+                return order.AddTax(tax);
             }
+
+            if (taxableCounties.Contains(stateCounty))
+            {
+                var county = Input.ParseString(message: "County: ");
+                var taxableCounty = stateCounty.County(county);
+                if (taxableStates.ContainsKey(taxableCounty))
+                {
+                    decimal tax = taxableStates[taxableCounty];
+                    return order.AddTax(tax);
+                }
+            }
+
+            return order;
         }
-
-
     }
 }
