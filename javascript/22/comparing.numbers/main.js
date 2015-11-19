@@ -8,13 +8,14 @@ function prompt() {
 }
 
 rl.on('line', function(line) {
-  if (line.match(/[0-9]/)) {
+  if (line.match(/^[0-9]*$/)) {
     numbers.add(line);
   }
   if (numbers.complete()) {
     rl.close();
   }
   if (numbers.same()) {
+    console.log('Numbers must be unique.')
     process.exit(0);
   }
   prompt();
